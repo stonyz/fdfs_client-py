@@ -9,7 +9,7 @@ import datetime
 import errno
 from fdfs_client.fdfs_protol import *
 from fdfs_client.connection import *
-from fdfs_client.sendfile import *
+#from fdfs_client.sendfile import *
 from fdfs_client.exceptions import (
     FDFSError,
     ConnectionError,

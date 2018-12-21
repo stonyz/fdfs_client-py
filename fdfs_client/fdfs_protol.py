@@ -199,7 +199,7 @@ class Tracker_header(object):
         """Send Tracker header to server."""
         header = self._pack(self.pkg_len, self.cmd, self.status)
         try:
-            conn.sendall(header)
+            conn.get_sock().sendall(header)
         except (socket.error, socket.timeout) as e:
             raise ConnectionError('[-] Error: while writting to socket: %s' \
                                   % (e.args,))
@@ -209,7 +209,7 @@ class Tracker_header(object):
            if sucess, class member (pkg_len, cmd, status) is response.
         """
         try:
-            header = conn.recv(self.header_len())
+            header = conn.get_sock().recv(self.header_len())
         except (socket.error, socket.timeout) as e:
             raise ConnectionError('[-] Error: while reading from socket: %s' \
                                   % (e.args,))
